@@ -1,7 +1,9 @@
-package ru.geekbrains;
+package ru.geekbrains.task1;
 
 
-//        1. Создать класс, который может выполнять «тесты», в качестве тестов выступают классы
+import java.lang.reflect.InvocationTargetException;
+
+//          Создать класс, который может выполнять «тесты», в качестве тестов выступают классы
 //        с наборами методов с аннотациями @Test. Для этого у него должен быть статический метод start(),
 //        которому в качестве параметра передается или объект типа Class, или имя класса.
 //        Из «класса-теста» вначале должен быть запущен метод с аннотацией @BeforeSuite, если такой имеется,
@@ -12,15 +14,25 @@ package ru.geekbrains;
 //        в единственном экземпляре, иначе необходимо бросить RuntimeException при запуске «тестирования».
 //        Это домашнее задание никак не связано с темой тестирования через JUnit и использованием этой библиотеки,
 //        то есть проект пишется с нуля.
-//
-//        2. Написать программу для проверки ДЗ
-//        (Проанализировать папку с компилированными классами и вызвать методы, проверить результат)
-//
-//        3. Написать метод который позволял бы заполнить и вывести на консоль матрицу 4 на 4
-//        (заполненую инкрементом числа, начиная с 1)
-public class Main {
+public class Main1 {
 
-    public static void main(String[] args) {
-	// write your code here
+    public static void main(String[] args)
+    {
+        // write your code here
+        try
+        {
+            MakeTest.doAllTest(TestClass.class);
+            System.out.println();
+            MakeTest.doAllTest("ru.geekbrains.task1.TestClass");
+        }
+        catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
+        catch (InstantiationException e) {
+            e.printStackTrace();
+        }
+        catch (InvocationTargetException e) {
+            e.printStackTrace();
+        }
     }
 }
